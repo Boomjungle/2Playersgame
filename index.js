@@ -64,7 +64,6 @@ function move() {
 
 }
 
-
 function moveFirstPlayer() {
     document.addEventListener('keydown', (e) => {
         if(e.keyCode === 83) {
@@ -83,20 +82,20 @@ function moveFirstPlayer() {
     })
 }
 
-function moveFirstPlayer() {
+function moveSecondPlayer() {
     document.addEventListener('keydown', (e) => {
-        if(e.keyCode === 83) {
-            player1Direction = 'down';
-        }else if(e.keyCode === 87) {
-            player1Direction = 'up'
+        if(e.keyCode === 40) {
+            player2Direction = 'down';
+        }else if(e.keyCode === 38) {
+            player2Direction = 'up'
         }
     })
 
     document.addEventListener('keyup', (e) => {
-        if(e.keyCode ===83) {
-            player1Direction = '';
-        }else if(e.keyCode === 87) {
-            player1Direction = ''
+        if(e.keyCode ===40) {
+            player2Direction = '';
+        }else if(e.keyCode === 38) {
+            player2Direction = ''
         }
     })
 }
@@ -121,12 +120,12 @@ function ballMove() {
     ball.y -= ball.dy;
 
     if(ball.x >= 590 || ball.x <= 0) ball.dx = -ball.dx;
-    if(ball/y <= 0 || ball.y >= 490) ball.dy = -ball.dy;
+    if(ball.y <= 0 || ball.y >= 490) ball.dy = -ball.dy;
 
 
     if(ball.x <= player1.x + 20
         && ball.y >= player1.y
-        && ball.y + 5 <= player1 + 60) {
+        && ball.y + 10 <= player1 + 60) {
             ball.dx = -ball.dx;
         }
 
@@ -147,7 +146,7 @@ function updateScore() {
 function render() {
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    context.beingPath();
+    context.beginPath();
 
     context.rect(player1.x, player1.y, 20, 60);
     context.rect(player2.x, player2.y, 20, 60);
